@@ -1,0 +1,25 @@
+{
+  "name": "linked-list",
+  "version": "1.0.0",
+  "description": "Linked list data structure: an alternative to array",
+  "main": "LinkedList.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/LBtek/linked-list.git"
+  },
+  "keywords": [
+    "list",
+    "linked",
+    "linked list"
+  ],
+  "author": "Luan Rafael",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/LBtek/linked-list/issues"
+  },
+  "homepage": "https://github.com/LBtek/linked-list#readme"
+}
