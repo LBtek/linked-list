@@ -79,6 +79,14 @@ export class LinkedList {
   }
 
   add(value) {
+    if (value == null) 
+      return this
+
+    if (typeof value === 'string' && value.trim() === '') {
+      console.warn("Value can't be empty")
+      return this
+    }
+
     if (this.#firstElement === null) {
       const node = new NodeLinkedList(value)
       this.#firstElement = node
@@ -377,13 +385,34 @@ export class LinkedList {
     return this
   }
 
-  toString() {
-    if (!this.length) return JSON.stringify(this)
-    if (this.#stringify) return this.#stringify({...this.listAll()})
-    else return JSON.stringify({...this.listAll()})
+  toString(separator = '<->') {
+    if (typeof separator !== 'string') {
+      console.warn('Type of "separator" argument must be string')
+      return
+    }
+
+    if (!this.#length) 
+      return '[empty LinkedList object]'
+
+    const list = this.listAll()
+    let res = ''
+
+    if (this.#stringify)
+      list.forEach(element => res += separator + this.#stringify(element))
+
+    else
+      list.forEach(element => res += separator + JSON.stringify(element))
+
+    return res.slice(separator.length)
   }
 
   valueOf() {
-    return this.toString()
+    if (!this.length) 
+      return 'LinkedList ' + JSON.stringify(this)
+
+    if (this.#stringify) 
+      return 'LinkedList ' + this.#stringify({...this.listAll()})
+    
+    return 'LinkedList ' + JSON.stringify({...this.listAll()})
   }
 }
