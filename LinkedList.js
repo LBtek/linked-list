@@ -87,7 +87,7 @@ export class LinkedList {
       return this
 
     if (typeof value === 'string' && value.trim() === '') {
-      console.warn("Value can't be empty")
+      console.warn("Value cannot be empty")
       return this
     }
 
@@ -402,14 +402,14 @@ export class LinkedList {
     if (!this.#length) 
       return '[empty LinkedList object]'
 
-    const list = this.listAll()
+    const stringify = this.#stringify || JSON.stringify
+    let node = this.#lastElement
+    let i = this.#length
     let res = ''
-
-    if (this.#stringify)
-      list.forEach(element => res += separator + this.#stringify(element))
-
-    else
-      list.forEach(element => res += separator + JSON.stringify(element))
+    while(i--) {
+      res += separator + stringify(node.value)
+      node = node.prev
+    }
 
     return res.slice(separator.length)
   }
