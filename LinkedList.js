@@ -50,9 +50,13 @@ export class LinkedList {
   }
 
   #getNode(position) {
+    if (!Number.isInteger(position)) {
+      console.warn('Argument "position" must be integer')
+      return
+    }
     if (position >= 0 && position < this.length) {
       let i = this.#length - 1 
-      if (position > (i / 2)) {
+      if (position >= Math.ceil(i/2)) {
         let node = this.#lastElement
         while(i !== position) {
           node = node.prev
