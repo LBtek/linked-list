@@ -403,12 +403,12 @@ export class LinkedList {
       return '[empty LinkedList object]'
 
     const stringify = this.#stringify || JSON.stringify
-    let node = this.#lastElement
+    let node = this.#firstElement
     let i = this.#length
     let res = ''
     while(i--) {
       res += separator + stringify(node.value)
-      node = node.prev
+      node = node.next
     }
 
     return res.slice(separator.length)
