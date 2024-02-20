@@ -260,15 +260,13 @@ export class LinkedList {
   }
 
   splice(idx, deleteCount, itemOrArrayItemsToAdd = null, startAfter = false, circulate = false) {
-    if (typeof startAfter !== 'boolean' || typeof circulate !== 'boolean') {
-      if (startAfter !== 0 && startAfter !== 1) {
-        console.warn('Argument "startAfter" must be a boolean or 0 or 1')
-        return
-      }
-      if (circulate !== 0 && circulate !== 1) {
-        console.warn('Argument "circulate" must be a boolean or 0 or 1')
-        return
-      } 
+    if (typeof startAfter !== 'boolean' && startAfter !== 0 && startAfter !== 1) {
+      console.warn('Argument "startAfter" must be a boolean or 0 or 1')
+      return
+    }
+    if (typeof circulate !== 'boolean' && circulate !== 0 && circulate !== 1) {
+      console.warn('Argument "circulate" must be a boolean or 0 or 1')
+      return
     }
 
     let itemsToAdd = []
